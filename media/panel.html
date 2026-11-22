@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src {{cspSource}} data:; style-src 'nonce-{{nonce}}'; script-src 'nonce-{{nonce}}';">
+<style nonce="{{nonce}}">
+:root{--bg1:#1A1220;--bg2:#0E0A12;--card:#221726;--line:#3E3342;--purple:#5A415E;--cream:#FBEAE7;--mauve:#DDC2CE;--dim:#A894AE;--cyan:#7DFAFB;--teal:#0399A6;--dark:#241825;--coral:#FF7A90;--coral-l:#FFB3C1;--coral-t:#2E1B27;--amber:#FFC26B;--amber-l:#FFDDA6;--amber-t:#2E2519}
+*{box-sizing:border-box}
+body{margin:0;padding:20px 16px 90px;min-height:100vh;color:var(--cream);font:13px/1.4 var(--vscode-font-family,Inter,system-ui,sans-serif);background:linear-gradient(var(--bg1),var(--bg2)) fixed}
+h1{margin:0;font-size:18px}
+p{margin:0}
+.dim{color:var(--dim)} .mauve{color:var(--mauve)} .small{font-size:10px} .mid{font-size:11px}
+.col{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.hero{display:flex;flex-direction:column;align-items:center;gap:4px;position:relative}
+.hero::before{content:"";position:absolute;top:-8px;width:140px;height:140px;border-radius:50%;background:radial-gradient(#7DFAFB59,transparent 70%)}
+.hero img{width:96px;height:96px;position:relative}
+.hero h1,.hero p{position:relative}
+.logo-s{width:40px;height:40px}
+.center{text-align:center} .title{font-size:15px} .end{align-items:flex-end}
+.needs.coral{color:var(--coral)} .needs.amber{color:var(--amber)}
+.btn{width:100%;height:38px;border-radius:8px;border:1px solid var(--cyan);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;background:none;color:var(--cyan)}
+.btn.primary{background:var(--cyan);color:var(--dark)}
+.btn.ghost{font-weight:500;font-size:12px}
+.btn.quiet{border-color:var(--purple);color:var(--mauve);font-weight:500;font-size:12px}
+.btn:hover{filter:brightness(1.1)}
+.or{display:flex;align-items:center;gap:10px;font-size:9px;letter-spacing:.08em;color:var(--dim)}
+.or i{flex:1;height:1px;background:var(--line)}
+label{display:block;font-size:11px;font-weight:500;color:var(--mauve);margin-bottom:6px}
+select{width:100%;height:36px;padding:0 8px;border-radius:8px;border:1px solid var(--purple);background:var(--card);color:var(--cream);font-family:inherit;font-size:12px;outline:none}
+select:focus{border-color:var(--cyan)}
+input{width:100%;height:36px;padding:0 10px;border-radius:8px;border:1px solid var(--purple);background:var(--card);color:var(--cream);font-family:inherit;font-size:12px;outline:none}
+input:focus{border-color:var(--cyan)}
+input::placeholder{color:#8D7A92}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:5px 10px;border-radius:12px;border:1px solid var(--purple);background:none;color:var(--mauve);font-family:inherit;font-size:11px;font-weight:500;cursor:pointer}
+.chip.on{background:var(--cyan);border-color:var(--cyan);color:var(--dark)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.card.coral{background:var(--coral-t);border-color:var(--coral)} .card.amber{background:var(--amber-t);border-color:var(--amber)}
+.card.pad16{padding:16px;gap:12px}
+.kv{display:flex;justify-content:space-between;font-size:11px}
+.kv span:first-child{color:var(--dim)} .kv span:last-child{font-weight:500}
+.rule{height:1px;background:var(--line)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+.cy{color:var(--cyan)} .semi{font-weight:600}
+.sw{width:36px;height:20px;border-radius:10px;background:var(--line);padding:2px;display:flex;cursor:pointer;border:0}
+.sw i{width:16px;height:16px;border-radius:50%;background:#8D7A92}
+.sw.on{background:var(--cyan);justify-content:flex-end} .sw.on i{background:var(--dark)}
+.big{font-size:28px;font-weight:700;color:var(--cyan);line-height:1}
+.track{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.track b{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cyan),var(--teal));width:0}
+.track.amber b{background:var(--amber)}
+.stats{display:flex;gap:8px} .stats div{flex:1;font-size:14px;font-weight:700} .stats span{display:block;font-size:10px;font-weight:400;color:var(--dim)}
+.icon{width:36px;height:36px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700}
+.coral .icon,.coral .t{color:var(--coral);border-color:var(--coral)} .amber .icon,.amber .t{color:var(--amber);border-color:var(--amber)}
+.coral h2{color:var(--coral-l)} .amber h2{color:var(--amber-l)}
+h2{margin:0;font-size:15px}
+.msg{font-size:11px;line-height:1.5;color:var(--mauve)}
+.tide{position:fixed;left:0;right:0;bottom:0;width:100%;height:56px;pointer-events:none}
+.tide path:nth-child(1){opacity:.14} .tide path:nth-child(2){opacity:.35} .tide path:nth-child(3){opacity:.5}
+</style>
+</head>
+<body>
+<div id="app" class="col"></div>
+<svg class="tide" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7DFAFB"/><stop offset="1" stop-color="#1A1220"/></linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0399A6"/><stop offset="1" stop-color="#1A1220"/></linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7DFAFB"/><stop offset="1" stop-color="#5A415E"/></linearGradient>
+  </defs>
+  <path fill="url(#g1)" d="M0 20 C50 0 100 40 150 20 S250 0 300 20 L300 60 L0 60Z"/>
+  <path fill="url(#g2)" d="M0 30 C60 50 110 10 170 30 S260 45 300 25 L300 60 L0 60Z"/>
+  <path fill="url(#g3)" d="M0 45 C40 35 90 55 150 45 S250 35 300 45 L300 60 L0 60Z"/>
+</svg>
+<script nonce="{{nonce}}">
+const vscode = acquireVsCodeApi();
+const LOGO = "{{logo}}";
+const app = document.getElementById("app");
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = (n) => (n >= 1000 ? (n / 1000).toFixed(1) + "k" : String(n));
+let S = null;                   // last state from the extension
+let form = null;                // login form values, kept across re-renders
+let tick = null;
+
+const brand = () => `<div class="hero"><img src="${LOGO}" alt=""><h1>WhoisPilot</h1><p class="mauve mid">Fast AI autocomplete</p></div>`;
+
+function login() {
+  const f = form;
+  return `${brand()}
+  <button class="btn primary" data-act="chatgpt">Continue with ChatGPT</button>
+  <p class="dim small center">Use your ChatGPT plan (eligible Plus and Pro). No API key needed.</p>
+  <div class="or"><i></i><span>OR BRING YOUR OWN KEY</span><i></i></div>
+  <div><label>Provider</label><div class="chips">${S.providers.map((p) => `<button class="chip ${p.id === f.provider ? "on" : ""}" data-act="chip" data-id="${p.id}">${esc(p.label)}</button>`).join("")}</div></div>
+  <div><label>Base URL</label><input id="baseUrl" value="${esc(f.baseUrl)}" spellcheck="false"></div>
+  <div><label>Model</label><input id="model" list="models" value="${esc(f.model)}" spellcheck="false"><datalist id="models">${(S.models || []).map((m) => `<option value="${esc(m.slug)}">`).join("")}</datalist></div>
+  <div><label>API key</label><input id="key" type="password" value="${esc(f.key)}" placeholder="${S.keyMask ? esc(S.keyMask) + " (saved)" : "sk-..."}" spellcheck="false"></div>
+  <button class="btn ghost" data-act="save">Save key</button>
+  <p class="dim small">Works with any OpenAI-compatible API. Key stays in VS Code Secret Storage.</p>`;
+}
+
+function modelPicker() {
+  const list = S.models || [];
+  if (!list.length) return `<input id="modelPick" value="${esc(S.model)}" placeholder="model name" spellcheck="false">`;
+  const slugs = list.map((m) => m.slug);
+  const all = slugs.includes(S.model) || !S.model ? list : [{ slug: S.model, name: S.model }, ...list];
+  const auto = S.plan ? `<option value="__auto__" ${S.modelAuto ? "selected" : ""}>Auto: fastest (${esc(S.model)}${S.modelMs ? ", " + S.modelMs + " ms" : ""})</option>` : "";
+  return `<select id="modelPick">${auto}${all.map((m) => `<option value="${esc(m.slug)}" ${m.slug === S.model && !S.modelAuto ? "selected" : ""}>${esc(m.name)}</option>`).join("")}</select>`;
+}
+
+function status() {
+  const st = S.stats, s = S.settings;
+  return `<div class="row"><img class="logo-s" src="${LOGO}" alt=""><div><div class="semi title">WhoisPilot</div><div class="mauve small">${S.enabled ? "Ready - press Tab to accept" : "Paused"}</div></div></div>
+  <div class="card">
+    <div class="row between"><div class="row"><span class="dot"></span><span class="cy semi">${S.lastMs ? "Connected" : "Ready"}</span></div><span class="mauve mid">${S.lastMs ? S.lastMs + " ms" : "-"}</span></div>
+    <div class="rule"></div>
+    <div class="kv"><span>Provider</span><span>${esc(S.label)}</span></div>
+    <div class="kv"><span>Model</span><span>${esc(S.model)}</span></div>
+    <div class="kv"><span>${S.plan ? "Account" : "API key"}</span><span>${esc(S.keyMask || "not needed")}</span></div>
+  </div>
+  <div class="card"><div class="row between"><div><div class="semi">Inline autocomplete</div><div class="dim small">Ghost text while you type</div></div><button class="sw ${S.enabled ? "on" : ""}" data-act="toggle" aria-label="Toggle autocomplete"><i></i></button></div></div>
+  ${S.plan ? `<div class="card"><div class="row between"><span class="cy semi">Using ChatGPT plan</span><button class="chip" data-act="billing">Manage usage</button></div></div>` : ""}
+  <div class="card">
+    <div class="row between"><span class="dim mid">Model</span><button class="chip" data-act="refreshModels">Refresh list</button></div>
+    ${modelPicker()}
+    <p class="dim small">Pick a fast, small model for autocomplete. Big models answer slowly.</p>
+  </div>
+  <div class="card">
+    <div class="dim mid">Tokens saved this session</div>
+    <div class="row end"><span class="big">${st.pct}%</span><span class="mauve small">${fmt(st.saved)} of ${fmt(st.saved + st.sent)} avoided</span></div>
+    <div class="track"><b id="bar"></b></div>
+    <div class="stats"><div>${st.requests}<span>Requests</span></div><div>${st.acceptedPct}%<span>Accepted</span></div><div>${S.lastMs || "-"}<span>Last latency (ms)</span></div></div>
+  </div>
+  <div class="card">
+    <div class="dim mid">Token saver</div>
+    <div class="kv"><span>Debounce</span><span>${s.debounceMs} ms</span></div>
+    <div class="kv"><span>Max output</span><span>${s.maxTokens} tokens</span></div>
+    <div class="kv"><span>Context window</span><span>${(s.contextChars / 1000).toFixed(1)} KB around cursor</span></div>
+  </div>
+  <div class="row"><button class="btn ghost" data-act="changeProvider">Change provider</button><button class="btn quiet" data-act="signOut">Sign out</button></div>`;
+}
+
+function error() {
+  const e = S.err, tone = e.kind === "quota" ? "amber" : "coral";
+  const T = {
+    key: ["!", "API key rejected", `${S.label} refused this key (${e.status}). It may be wrong, expired or revoked. Autocomplete is paused so no tokens are wasted.`, "Update API key", "changeProvider", "Retry", "retry"],
+    quota: ["!", "Rate limit reached", "Too many requests or the balance ran out. WhoisPilot backs off automatically and retries.", "Switch provider", "changeProvider", "Open billing page", "billing"],
+    offline: ["×", "Can't reach the server", "No response from the Base URL. Check your internet connection, the URL, or that your local server (Ollama) is running.", "Retry now", "retry", "Edit Base URL", "changeProvider"],
+  }[e.kind];
+  if (S.plan && e.kind === "key") { T[1] = "Sign-in expired"; T[2] = "ChatGPT refused this session (" + e.status + "). Sign in again to turn autocomplete back on."; T[3] = "Continue with ChatGPT"; T[4] = "chatgpt"; }
+  if (S.plan && e.kind === "quota") { T[2] = "You reached your ChatGPT plan usage limit. Autocomplete resumes by itself; review your limit in ChatGPT settings."; T[3] = "Manage usage"; T[4] = "billing"; T[5] = "Switch provider"; T[6] = "changeProvider"; }
+  const rows = [["Provider", S.label], ["Status", e.status ? String(e.status) : "no response"], ["Base URL", S.baseUrl.replace(/^https?:\/\//, "")]];
+  return `<div class="row"><img class="logo-s" src="${LOGO}" alt=""><div><div class="semi title">WhoisPilot</div><div class="small needs ${tone}">Needs attention</div></div></div>
+  <div class="card pad16 ${tone}">
+    <div class="icon">${T[0]}</div><h2>${T[1]}</h2><p class="msg">${esc(T[2])}</p>
+    ${e.until ? `<div class="track amber"><b id="cd"></b></div><div class="small t" id="cdl"></div>` : ""}
+    <div class="rule"></div>${rows.map(([k, v]) => `<div class="kv"><span>${k}</span><span>${esc(v)}</span></div>`).join("")}
+  </div>
+  <div class="card"><div class="row between"><div><div class="semi">Inline autocomplete</div><div class="dim small">Paused until this is fixed</div></div><button class="sw" disabled aria-label="Paused"><i></i></button></div></div>
+  <button class="btn primary" data-act="${T[4]}">${T[3]}</button><button class="btn quiet" data-act="${T[6]}">${T[5]}</button>`;
+}
+
+function render() {
+  if (!S) return;
+  if (S.view === "login" && !form) {
+    const p = S.providers.find((x) => x.id === S.provider) || S.providers.find((x) => x.id === "deepseek") || S.providers[0];
+    form = p.id === S.provider ? { provider: p.id, baseUrl: S.baseUrl, model: S.model, key: "" } : { provider: p.id, baseUrl: p.baseUrl, model: p.model, key: "" };
+  }
+  if (S.view !== "login") form = null;
+  app.innerHTML = S.view === "login" ? login() : S.view === "error" ? error() : status();
+  const bar = document.getElementById("bar"); if (bar) bar.style.width = S.stats.pct + "%";
+  clearInterval(tick);
+  const cd = document.getElementById("cd");
+  if (cd && S.err.until) {
+    const total = Math.max(1, S.err.until - Date.now());
+    const upd = () => { const left = Math.max(0, S.err.until - Date.now()); cd.style.width = (left / total * 100) + "%"; document.getElementById("cdl").textContent = "Retrying in " + Math.ceil(left / 1000) + " s"; };
+    upd(); tick = setInterval(upd, 500);
+  }
+}
+
+window.addEventListener("message", (e) => { if (e.data?.type === "state") { S = e.data; render(); } });
+document.addEventListener("input", (e) => { if (form && e.target.id) form[e.target.id] = e.target.value; });
+document.addEventListener("change", (e) => { if (e.target.id === "modelPick" && e.target.value) vscode.postMessage({ type: "setModel", model: e.target.value.trim() }); });
+document.addEventListener("click", (e) => {
+  const el = e.target.closest("[data-act]"); if (!el) return;
+  const act = el.dataset.act;
+  if (act === "chip") {
+    const p = S.providers.find((x) => x.id === el.dataset.id);
+    form = { ...form, provider: p.id, baseUrl: p.baseUrl, model: p.model };
+    render();
+  } else if (act === "save") {
+    vscode.postMessage({ type: "save", ...form });
+  } else {
+    vscode.postMessage({ type: act });
+  }
+});
+vscode.postMessage({ type: "ready" });
+</script>
+</body>
+</html>

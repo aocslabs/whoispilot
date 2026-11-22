@@ -1,0 +1,23 @@
+# build output and dependencies
+node_modules/
+out/
+*.vsix
+.vscode-test/
+
+# local editor / OS files
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
+# never commit credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+*.token
+credentials*.json
+secrets*.json

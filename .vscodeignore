@@ -1,0 +1,10 @@
+src/**
+tools/**
+node_modules/**
+tsconfig.json
+.gitignore
+out/**/*.test.js
+out/e2e/**
+.vscode/**
+media/screenshots/**
+media/lang-icons/**

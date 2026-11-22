@@ -1,0 +1,189 @@
+{
+  "name": "whoispilot",
+  "displayName": "WhoisPilot",
+  "description": "Fast inline AI autocomplete with instant real-code blocks. Sign in with ChatGPT or bring your own API key: OpenAI, DeepSeek, Anthropic, Gemini, Mistral, Groq, OpenRouter, Ollama or any OpenAI-compatible URL.",
+  "keywords": ["autocomplete", "inline completion", "ai", "ghost text", "chatgpt", "deepseek", "gemini", "ollama"],
+  "version": "0.1.0",
+  "publisher": "aocslabs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aocslabs/whoispilot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aocslabs/whoispilot/issues"
+  },
+  "homepage": "https://github.com/aocslabs/whoispilot#readme",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Machine Learning"
+  ],
+  "icon": "media/logo.png",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "whoispilot",
+          "title": "WhoisPilot",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "whoispilot": [
+        {
+          "type": "webview",
+          "id": "whoispilot.panel",
+          "name": "WhoisPilot"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "whoispilot.toggle",
+        "title": "WhoisPilot: Toggle Inline Autocomplete"
+      },
+      {
+        "command": "whoispilot.setKey",
+        "title": "WhoisPilot: Set API Key"
+      },
+      {
+        "command": "whoispilot.signInChatGPT",
+        "title": "WhoisPilot: Continue with ChatGPT"
+      },
+      {
+        "command": "whoispilot.retry",
+        "title": "WhoisPilot: Retry Connection"
+      }
+    ],
+    "configuration": {
+      "title": "WhoisPilot",
+      "properties": {
+        "whoispilot.provider": {
+          "type": "string",
+          "default": "deepseek",
+          "enum": [
+            "chatgpt",
+            "openai",
+            "deepseek",
+            "anthropic",
+            "gemini",
+            "mistral",
+            "groq",
+            "openrouter",
+            "ollama",
+            "custom"
+          ]
+        },
+        "whoispilot.baseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Empty = provider default."
+        },
+        "whoispilot.model": {
+          "type": "string",
+          "default": "",
+          "description": "Empty = provider default."
+        },
+        "whoispilot.mode": {
+          "type": "string",
+          "default": "auto",
+          "enum": [
+            "auto",
+            "fim",
+            "chat",
+            "responses"
+          ],
+          "description": "fim sends prefix + suffix (cheapest). chat uses a tiny chat prompt. responses uses the OpenAI Responses API (streaming). auto = provider default."
+        },
+        "whoispilot.debounceMs": {
+          "type": "number",
+          "default": 200
+        },
+        "whoispilot.multiline": {
+          "type": "boolean",
+          "default": true,
+          "description": "Suggest whole blocks when the cursor is at the end of a line. Off = always one line (cheaper)."
+        },
+        "whoispilot.relatedFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Send short snippets (about 2 x 500 characters) from your other OPEN files that share names with the code at the cursor, so suggestions reuse your helpers and style. Secret files (.env, keys...) are never included. Turn off to send only the current file."
+        },
+        "whoispilot.instantTemplates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Type the first letters of a construct (i, for, <t ...) and a whole starter block shows instantly, offline. The model then rewrites it for your file and replaces it."
+        },
+        "whoispilot.templates": {
+          "type": "object",
+          "additionalProperties": { "type": "object", "additionalProperties": { "type": "string" } },
+          "default": {},
+          "description": "Your own instant templates: { \"python\": { \"main\": \"def main():\\n\\tpass\\n\\nif __name__ == \\\"__main__\\\":\\n\\tmain()\" } }. Language id (or \"*\" for all) -> trigger word -> body. Use \\t for one indent level. A body of \"\" turns a built-in template off."
+        },
+        "whoispilot.customInstructions": {
+          "type": "string",
+          "default": "",
+          "description": "Your style rules, added to every request (keep short: they cost tokens each time). Example: \"Use tabs. Prefer early returns. Comments in Indonesian.\" Not used by FIM providers (DeepSeek/Mistral default); set whoispilot.mode to chat to use them."
+        },
+        "whoispilot.languageInstructions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "default": {},
+          "description": "Extra rules per language id, e.g. { \"python\": \"Use type hints and f-strings.\", \"html\": \"Use Tailwind classes.\" }."
+        },
+        "whoispilot.maxTokens": {
+          "type": "number",
+          "default": 320,
+          "description": "Max output tokens for multi-line suggestions. Higher = longer suggestions that look further ahead (and cost more)."
+        },
+        "whoispilot.reasoningEffort": {
+          "type": "string",
+          "default": "none",
+          "enum": [
+            "",
+            "none",
+            "low",
+            "medium",
+            "high"
+          ],
+          "description": "ChatGPT sign-in only: reasoning effort sent to the model. none = no thinking (fastest, recommended for autocomplete). Empty = the model's own default. (\"minimal\" is rejected by the models tested.) If a model refuses the value, WhoisPilot stops sending it."
+        },
+        "whoispilot.contextChars": {
+          "type": "number",
+          "default": 3000,
+          "description": "Characters of code before the cursor sent to the model (after the cursor: a quarter of this). More context = better guesses about where the code is going."
+        },
+        "whoispilot.disabledLanguages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Language ids where autocomplete is off, e.g. [\"markdown\"]."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "check": "tsc -p . && node out/core.test.js && node out/chatgpt.test.js && node out/templates.test.js && node out/snippets.test.js && node out/context.test.js",
+    "e2e": "tsc -p . && node out/e2e/runTests.js",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "1.90.0",
+    "@vscode/test-electron": "^3.1.0",
+    "typescript": "^5.4.0"
+  }
+}
