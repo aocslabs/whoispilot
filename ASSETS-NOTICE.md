@@ -9,7 +9,7 @@ per asset, what you may do with it. The source code itself is MIT (see [LICENSE]
 | `media/panel.html` | original work for this project | MIT |
 | `media/icon.svg` (activity bar icon) | hand-authored SVG in this repository | MIT |
 | `media/logo.png` (mascot) | commissioned/generated artwork; no third-party source file is bundled and no provenance metadata is recorded in the file | **no copyright claimed** — dedicated to CC0 1.0. See the note below. |
-| `media/lang-icons/*.svg`, `media/lang-icons/*.png` | [Simple Icons](https://simpleicons.org) | CC0 1.0. The marks themselves remain trademarks of their owners; they are used here only to identify languages. |
+| README badges and language icons (remote images) | [shields.io](https://shields.io) (CC0 1.0), [skillicons.dev](https://skillicons.dev) (MIT), [readme-typing-svg](https://github.com/DenverCoder1/readme-typing-svg) (MIT) | none bundled — the README links these services; the marks they draw remain trademarks of their owners and are used only to identify languages |
 | `media/screenshots/*.png` | screenshots of this extension running on demo code | MIT |
 | `media/dataset/*.json` | verbatim code blocks from public repositories | MIT / Apache-2.0 / BSD / Unlicense, per block — see [DATASET-NOTICE.md](DATASET-NOTICE.md) |
 
@@ -31,11 +31,12 @@ If you want a mascot with airtight provenance, draw one yourself, commission it 
 assignment, or take an asset whose license explicitly permits commercial and derivative use
 (CC0, CC BY, MIT-licensed icon packs), and record the source here.
 
-## Rebuilding derived assets
+## README images
 
-`media/lang-icons/*.png` are rasterised from the sibling `.svg` files with
-`python tools/svg2png.py`. Re-run it after adding an icon, or use the `.svg` files directly
-for anything that accepts SVG (the VS Code Marketplace does not render SVG in a README).
+Badges, the animated tagline and the language icon strip are remote URLs (shields.io,
+readme-typing-svg, skillicons.dev) — nothing is vendored, so there is no third-party file in this
+repository to license. The VS Code Marketplace rejects **local** `.svg` references inside a README,
+which is why the repository ships PNG screenshots (`media/screenshots`) rather than vector art.
 
 ## Attribution text you can copy
 

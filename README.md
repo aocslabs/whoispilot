@@ -2,11 +2,20 @@
   <img src="media/logo.png" width="140" alt="WhoisPilot mascot">
 </p>
 
-# WhoisPilot
+<h1 align="center">WhoisPilot</h1>
 
 <p align="center">
-  <b>Fast inline AI autocomplete for VS Code</b><br>
-  ghost text that writes whole blocks, offline instant starters, and your own model.
+  <a href="https://github.com/aocslabs/whoispilot/releases"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1100&color=7DFAFB&center=true&vCenter=true&width=620&lines=inline+autocomplete+for+VS+Code;instant+blocks+of+real+code;ghost+text%2C+Tab+to+accept;any+model%2C+any+language" alt="WhoisPilot"></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-7DFAFB?style=flat-square&labelColor=1A1220" alt="MIT">
+  <img src="https://img.shields.io/badge/VS%20Code-1.90%2B-007ACC?style=flat-square&labelColor=1A1220" alt="VS Code 1.90+">
+  <img src="https://img.shields.io/badge/TypeScript-5.4-3178C6?style=flat-square&labelColor=1A1220" alt="TypeScript">
+  <img src="https://img.shields.io/badge/providers-10-7DFAFB?style=flat-square&labelColor=1A1220" alt="10 providers">
+  <img src="https://img.shields.io/badge/languages-any-0399A6?style=flat-square&labelColor=1A1220" alt="any language">
+  <img src="https://img.shields.io/badge/telemetry-none-34A853?style=flat-square&labelColor=1A1220" alt="no telemetry">
+  <img src="https://img.shields.io/github/stars/aocslabs/whoispilot?style=flat-square&labelColor=1A1220&color=7DFAFB" alt="stars">
 </p>
 
 Fast inline AI autocomplete for VS Code. Gray "ghost text" appears as you type, **Tab** accepts it. Bring your own model: sign in with your ChatGPT plan, or use an API key for OpenAI, DeepSeek, Anthropic, Gemini, Mistral, Groq, OpenRouter, Ollama, or any OpenAI-compatible URL.
@@ -34,34 +43,17 @@ Fast inline AI autocomplete for VS Code. Gray "ghost text" appears as you type, 
 
 ## Languages
 
-Ghost text works in **any** language VS Code knows (anything with a language id) — nothing is hard-coded per language. The icons below are the languages with tested instant blocks in [`media/dataset`](media/dataset); the rest still get model completions.
+Ghost text works in **any** language VS Code knows — nothing is hard-coded per language. These 17
+have instant blocks mined in [`media/dataset`](media/dataset) and are covered by the test suite; every
+other language still gets model completions.
 
-<table>
-<tr>
-<td align="center" width="72"><img src="media/lang-icons/python.png" width="34" alt="Python"><br><sub>Python</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/javascript.png" width="34" alt="JavaScript"><br><sub>JavaScript</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/typescript.png" width="34" alt="TypeScript"><br><sub>TypeScript</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/java.png" width="34" alt="Java"><br><sub>Java</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/go.png" width="34" alt="Go"><br><sub>Go</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/rust.png" width="34" alt="Rust"><br><sub>Rust</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/php.png" width="34" alt="PHP"><br><sub>PHP</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/ruby.png" width="34" alt="Ruby"><br><sub>Ruby</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/csharp.png" width="34" alt="C#"><br><sub>C#</sub></td>
-</tr>
-<tr>
-<td align="center" width="72"><img src="media/lang-icons/c.png" width="34" alt="C"><br><sub>C</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/cpp.png" width="34" alt="C++"><br><sub>C++</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/css.png" width="34" alt="CSS"><br><sub>CSS</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/html.png" width="34" alt="HTML"><br><sub>HTML</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/shell.png" width="34" alt="Shell"><br><sub>Shell</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/lua.png" width="34" alt="Lua"><br><sub>Lua</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/kotlin.png" width="34" alt="Kotlin"><br><sub>Kotlin</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/swift.png" width="34" alt="Swift"><br><sub>Swift</sub></td>
-<td align="center" width="72"><img src="media/lang-icons/more.png" width="34" alt="and more"><br><sub>+60 more</sub></td>
-</tr>
-</table>
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=py,js,ts,java,go,rust,php,ruby,cs,c,cpp,css,html,bash,lua,kotlin,swift&theme=dark&perline=17" alt="Python, JavaScript, TypeScript, Java, Go, Rust, PHP, Ruby, C#, C, C++, CSS, HTML, Shell, Lua, Kotlin, Swift">
+</p>
 
-Icons: [Simple Icons](https://simpleicons.org) (CC0 1.0); brand marks belong to their owners.
+Python · JavaScript · TypeScript · Java · Go · Rust · PHP · Ruby · C# · C · C++ · CSS · HTML · Shell · Lua · Kotlin · Swift
+
+Badges by [shields.io](https://shields.io), animated line by [readme-typing-svg](https://github.com/DenverCoder1/readme-typing-svg), language icons by [skillicons.dev](https://skillicons.dev).
 
 ## Install (from source)
 
