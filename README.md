@@ -140,4 +140,4 @@ npm run e2e     # end-to-end suite inside a real VS Code with a fake model serve
 
 ## License
 
-MIT for the source code (see [LICENSE](LICENSE)). Dataset blocks keep their own licenses ([DATASET-NOTICE.md](DATASET-NOTICE.md)).
+MIT for the source code (see [LICENSE](LICENSE)). Dataset blocks keep their own licenses ([DATASET-NOTICE.md](DATASET-NOTICE.md)); icons, mascot and screenshots are covered per asset in [ASSETS-NOTICE.md](ASSETS-NOTICE.md).
