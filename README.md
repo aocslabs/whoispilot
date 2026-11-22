@@ -1,4 +1,13 @@
+<p align="center">
+  <img src="media/logo.png" width="140" alt="WhoisPilot mascot">
+</p>
+
 # WhoisPilot
+
+<p align="center">
+  <b>Fast inline AI autocomplete for VS Code</b><br>
+  ghost text that writes whole blocks, offline instant starters, and your own model.
+</p>
 
 Fast inline AI autocomplete for VS Code. Gray "ghost text" appears as you type, **Tab** accepts it. Bring your own model: sign in with your ChatGPT plan, or use an API key for OpenAI, DeepSeek, Anthropic, Gemini, Mistral, Groq, OpenRouter, Ollama, or any OpenAI-compatible URL.
 
